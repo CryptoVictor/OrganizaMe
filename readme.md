@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreicudnxlegrxksz365otm67naoqh2jidbnfibziaavwtn7qj6sc5f4" alt="Logo">
+</p>
+
+<br/>
+
 # Projeto Individual Integrado - Módulo 2025-1B
 
 <!-- ÍNDICE --> 
