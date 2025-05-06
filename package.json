@@ -1,7 +1,7 @@
 {
-  "name": "mvc-boilerplate",
+  "name": "organizame",
   "version": "1.0.0",
-  "description": "Boilerplate para estrutura MVC em JavaScript com PostgreSQL e testes",
+  "description": "Inteli Project",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
