@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/OrganizaMe.png" alt="Logo">
+  <img src="https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreicudnxlegrxksz365otm67naoqh2jidbnfibziaavwtn7qj6sc5f4" alt="Logo">
 </p>
 
 <br/>
@@ -32,7 +32,7 @@ Trata-se de um site desenvolvido com o objetivo de facilitar o agendamento e a g
 
 ### 2.1. Personas (Semana 01)
 
-![persona](/Persona_Manuela_Soares.png)
+![persona](https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafybeiandnjblivvjlqrqpeeqwbrium7jbqotspzftdysxftzvrei4bi4m)
 
 ### 2.2. User Stories (Semana 01)
 
