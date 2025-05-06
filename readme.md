@@ -57,7 +57,7 @@ O OrganizaMe trata-se de um site desenvolvido com o objetivo de facilitar o agen
 ## Estrutura de Pastas
 
 ````bash
-OrganizaMe/
+OrganizaMe-master/
 │
 ├── config/                # Arquivos de configuração (ex: conexão com banco)
 │   └── database.js
@@ -104,7 +104,7 @@ git clone https://github.com/CryptoVictor/OrganizaMe.git
 2. Acesse a pasta do projeto:
 
 ```bash
-cd OrganizaMe
+cd OrganizaMe-master
 ```
 
 3. Instale as dependências:
