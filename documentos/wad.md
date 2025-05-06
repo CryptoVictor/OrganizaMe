@@ -64,9 +64,52 @@ Trata-se de um site desenvolvido com o objetivo de facilitar o agendamento e a g
 
 ### 3.1. Modelagem do banco de dados  (Semana 3)
 
-*Posicione aqui os diagramas de modelos relacionais do seu banco de dados, apresentando todos os esquemas de tabelas e suas relações. Utilize texto para complementar suas explicações, se necessário.*
+````bash
 
-*Posicione também o modelo físico com o Schema do BD (arquivo .sql)*
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    papel VARCHAR(20) DEFAULT 'usuario',
+    criado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE salas (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    localizacao VARCHAR(255),
+    capacidade INT,
+    descricao TEXT,
+    disponivel BOOLEAN DEFAULT TRUE,
+    criado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE reservas (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT REFERENCES usuarios(id) ON DELETE CASCADE,
+    sala_id INT REFERENCES salas(id) ON DELETE CASCADE,
+    data_inicio TIMESTAMP NOT NULL,
+    data_fim TIMESTAMP NOT NULL,
+    status VARCHAR(20) DEFAULT 'ativa',
+    observacoes TEXT,
+    criado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE logs (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT REFERENCES usuarios(id),
+    acao VARCHAR(255) NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+````
+
+<p align="center">
+  <img src="https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreig2klbdk4nmmej4o66dchlue7t6644wegvnh5yaqcs347652coufq" alt="Logo">
+</p>
 
 ### 3.1.1 BD e Models (Semana 5)
 *Descreva aqui os Models implementados no sistema web*
