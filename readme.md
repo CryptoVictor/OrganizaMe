@@ -11,7 +11,7 @@
   <summary>Índice</summary> 
   <ol> 
     <li> 
-      <a href="#sobre-o-projeto">Sobre o Projeto</a> 
+      <a href="#descricao">Descrição</a> 
       <ul> 
     <li>
       <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>
@@ -38,7 +38,7 @@
   </ol> 
 </details>
 
-# Sobre o Projeto
+# Descrição
 
 O OrganizaMe trata-se de um site desenvolvido com o objetivo de facilitar o agendamento e a gestão de reservas de salas de forma simples, prática e eficiente. A plataforma permite ao usuário adicionar, modificar, editar e visualizar todas as informações relacionadas às reservas, com uma interface intuitiva e acessível, pensada para otimizar a experiência do usuário. Os dados são integrados diretamente a um banco de dados, garantindo atualização em tempo real e maior confiabilidade nas informações exibidas. Isso contribui para uma melhor organização e planejamento tanto por parte dos administradores do sistema quanto dos usuários que desejam reservar uma sala para seus compromissos. Com esse sistema, torna-se muito mais fácil evitar conflitos de horários, acompanhar a disponibilidade de espaços e manter um controle eficaz sobre o uso das salas, promovendo maior produtividade e organização.
 
@@ -53,6 +53,36 @@ O OrganizaMe trata-se de um site desenvolvido com o objetivo de facilitar o agen
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 # Primeiros Passos
+
+## Estrutura de Pastas
+
+````bash
+OrganizaMe/
+│
+├── config/                # Arquivos de configuração (ex: conexão com banco)
+│   └── database.js
+├── controllers/           # Lógica de controle das requisições
+│   └── HomeController.js
+├── models/                # Definição de modelos de dados (estrutura do banco)
+│   └── User.js
+├── routes/                # Definição das rotas do sistema
+│   └── index.js
+├── services/              # Serviços auxiliares do sistema
+│   └── userService.js
+├── assets/                # Arquivos públicos como imagens e fontes
+├── scripts/               # Arquivos de JavaScript públicos
+├── styles/                # Arquivos CSS públicos
+├── tests/                 # Arquivos de testes unitários
+│   └── example.test.js
+├── .gitignore             # Arquivo para ignorar arquivos no Git
+├── .env.example           # Arquivo de exemplo para variáveis de ambiente
+├── jest.config.js         # Arquivo de configuração do Jest
+├── package-lock.json      # Gerenciador de dependências do Node.js
+├── package.json           # Gerenciador de dependências do Node.js
+├── readme.md              # Documentação do projeto (Markdown)
+├── server.js              # Arquivo principal que inicializa o servidor
+└── rest.http              # Teste de endpoints (opcional)
+````
 
 ## Pré Requisitos
 
