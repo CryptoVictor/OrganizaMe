@@ -127,7 +127,25 @@ CREATE TABLE logs (
 
 ### 3.3. Wireframes (Semana 03)
 
-*Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização).*
+[**Figma**](https://www.figma.com/design/ny07wDWEYOBwBMXCgccSbo/Wireframe---OrganizaMe?node-id=0-1&t=qbXe4yQF0eKmbb6S-1)
+
+Tela Principal de Uso -> Aqui será possível acessar o histórico de reservas feitas anteriormente, e fazer novas reservas, além de ver as que já estão em andamento.
+
+<p align="center">
+  <img src="https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreiczpclegag6ipre2izngii4adqtcxb7pfbh3tmvfswxzzmt4kbks4" alt="Logo">
+</p>
+
+User Story 1 -> Aqui no User Story 1, é a tela que aparecerá depois de você clicar na tela principal de usuário que você deseja reservar uma nova sala, ele mostrará salas livres e ocupadas para que você possa selecionar alguma livre.
+
+<p align="center">
+  <img src="https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreig24ndascc6u3ef43yrkbzqykjaqjms2h5a67ks5cfmftxzc4iu5m" alt="Logo">
+</p>
+
+User Story 2 & 3 -> Aqui no User Story 2 & 3 será a tela que será redirecionado caso você na tela principal de usuário clique em editar reserva, aqui você tanto poderá deletar/cancelar sua reserva como você poderá também editar informações, como nome, motivo, entre outros.
+
+<p align="center">
+  <img src="https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreid3nkmvnszotnl224nojp246wjg7p4icabe2w647f5vrffgqsibym" alt="Logo">
+</p>
 
 ### 3.4. Guia de estilos (Semana 05)
 
