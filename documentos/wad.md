@@ -218,9 +218,6 @@ User Story 2 & 3 -> Aqui no User Story 2 & 3 será a tela que será redirecionad
 - **GET /usuarios**
   - Lista todos os usuários.
 
-- **GET /usuarios/:id**
-  - Retorna os dados de um usuário específico.
-
 - **PUT /usuarios/:id**
   - Atualiza os dados de um usuário.
   - Body: `{ nome?, email?, senha?, papel? }`
