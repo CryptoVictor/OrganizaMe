@@ -27,6 +27,9 @@
         <li>
           <a href="#instalação">Instalação</a>
         </li> 
+        <li>
+          <a href="#utilização">Utilização</a>
+        </li> 
       </ul> 
     </li> 
     <li>
@@ -117,6 +120,59 @@ npm install
 
 ```bash
 npm start
+```
+
+## Utilização
+
+1. Configure o .env:
+
+```bash
+DB_NAME='nome_do_banco'
+DB_USER='seu_usuario'
+DB_HOST='localhost
+DB_PASSWORD='sua senha'
+DB_PORT=0000
+```
+
+2. Execute o servidor:
+
+```bash
+node server.js
+```
+
+3. Acesso as API's:
+
+```bash
+http://localhost:3000/api
+```
+
+4. Endpoints Disponíveis:
+
+```bash
+Usuários
+
+POST /usuarios → Cria um usuário
+GET /usuarios → Lista todos os usuários
+PUT /usuarios/:id → Atualiza um usuário
+DELETE /usuarios/:id → Exclui um usuário
+```
+
+```bash
+Salas
+
+POST /salas → Cria uma nova sala
+GET /salas → Lista todas as salas
+PUT /salas/:id → Edita uma sala
+DELETE /salas/:id → Exclui uma sala
+```
+
+```bash
+Reservas
+
+POST /reservas → Cria uma reserva
+GET /reservas → Lista todas as reservas
+PUT /reservas/:id → Atualiza uma reserva
+DELETE /reservas/:id → Remove uma reserva
 ```
 
 # Contribuição
