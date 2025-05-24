@@ -112,18 +112,67 @@ CREATE TABLE logs (
 </p>
 
 ### 3.1.1 BD e Models (Semana 5)
-*Descreva aqui os Models implementados no sistema web*
+
+## Models Implementados
+
+### 1. Usuario
+
+Representa os usuários do sistema.
+
+**Campos:**
+- `id`: SERIAL PRIMARY KEY  
+- `nome`: VARCHAR(100) NOT NULL  
+- `email`: VARCHAR(100) UNIQUE NOT NULL  
+- `senha`: VARCHAR(255) NOT NULL  
+- `papel`: VARCHAR(20) DEFAULT 'usuario'  
+- `criado`: TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+
+---
+
+### 2. Sala
+
+Representa as salas que podem ser reservadas.
+
+**Campos:**
+- `id`: SERIAL PRIMARY KEY  
+- `nome`: VARCHAR(100) NOT NULL  
+- `localizacao`: VARCHAR(255)  
+- `capacidade`: INT  
+- `descricao`: TEXT  
+- `disponivel`: BOOLEAN DEFAULT TRUE  
+- `criado`: TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+
+---
+
+### 3. Reserva
+
+Representa as reservas realizadas pelos usuários.
+
+**Campos:**
+- `id`: SERIAL PRIMARY KEY  
+- `usuario_id`: INT REFERENCES usuarios(id) ON DELETE CASCADE  
+- `sala_id`: INT REFERENCES salas(id) ON DELETE CASCADE  
+- `data_inicio`: TIMESTAMP NOT NULL  
+- `data_fim`: TIMESTAMP NOT NULL  
+- `status`: VARCHAR(20) DEFAULT 'ativa'  
+- `observacoes`: TEXT  
+- `criado`: TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+
+---
+
+### 4. Log
+
+Registra ações realizadas por usuários no sistema.
+
+**Campos:**
+- `id`: SERIAL PRIMARY KEY  
+- `usuario_id`: INT REFERENCES usuarios(id)  
+- `acao`: VARCHAR(255) NOT NULL  
+- `timestamp`: TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
 
 ### 3.2. Arquitetura (Semana 5)
 
-*Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário.*
-
-**Instruções para criação do diagrama de arquitetura**  
-- **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
-- **View**: A camada responsável pela interface de usuário.
-- **Controller**: A camada que recebe as requisições, processa as ações e atualiza o modelo e a visualização.
-  
-*Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View.*
+![arquitetura](https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafybeiab4tvr6rbic467svr5g7wgl7jeryqsj5vrs3haalh324wu4ns25u)
 
 ### 3.3. Wireframes (Semana 03)
 
@@ -158,7 +207,64 @@ User Story 2 & 3 -> Aqui no User Story 2 & 3 será a tela que será redirecionad
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
-*Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema.*  
+## Endpoints da API
+
+### 🔐 Usuários
+
+- **POST /usuarios**
+  - Cria um novo usuário.
+  - Body: `{ nome, email, senha, papel? }`
+
+- **GET /usuarios**
+  - Lista todos os usuários.
+
+- **GET /usuarios/:id**
+  - Retorna os dados de um usuário específico.
+
+- **PUT /usuarios/:id**
+  - Atualiza os dados de um usuário.
+  - Body: `{ nome?, email?, senha?, papel? }`
+
+- **DELETE /usuarios/:id**
+  - Remove um usuário do sistema.
+
+---
+
+### 🏢 Salas
+
+- **POST /salas**
+  - Cria uma nova sala.
+  - Body: `{ nome, localizacao, capacidade, descricao, disponivel? }`
+
+- **GET /salas**
+  - Lista todas as salas.
+
+- **PUT /salas/:id**
+  - Edita os dados de uma sala.
+  - Body: `{ nome, localizacao, capacidade, descricao, disponivel }`
+
+- **DELETE /salas/:id**
+  - Exclui uma sala.
+
+---
+
+### 📅 Reservas
+
+- **POST /reservas**
+  - Cria uma nova reserva.
+  - Body: `{ usuario_id, sala_id, data_inicio, data_fim, observacoes? }`
+
+- **GET /reservas**
+  - Lista todas as reservas.
+
+- **PUT /reservas/:id**
+  - Edita uma reserva existente.
+  - Body: `{ usuario_id?, sala_id?, data_inicio?, data_fim?, status?, observacoes? }`
+
+- **DELETE /reservas/:id**
+  - Exclui uma reserva.
+
+---
 
 ### 3.7 Interface e Navegação (Semana 07)
 
