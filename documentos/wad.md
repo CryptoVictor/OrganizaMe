@@ -172,6 +172,8 @@ Registra ações realizadas por usuários no sistema.
 
 ### 3.2. Arquitetura (Semana 5)
 
+[**Figma**](https://www.figma.com/design/JTSL0VSAn0bQ7BDvlIRigA/Diagrama-MVC?node-id=0-1&t=9mAVGWzksHznQMRD-1)
+
 ![arquitetura](https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafybeiab4tvr6rbic467svr5g7wgl7jeryqsj5vrs3haalh324wu4ns25u)
 
 ### 3.3. Wireframes (Semana 03)
