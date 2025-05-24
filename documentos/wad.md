@@ -207,8 +207,6 @@ User Story 2 & 3 -> Aqui no User Story 2 & 3 será a tela que será redirecionad
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
-## Endpoints da API
-
 ### Usuários
 
 - **POST /usuarios**
