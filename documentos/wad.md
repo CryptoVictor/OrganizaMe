@@ -209,7 +209,7 @@ User Story 2 & 3 -> Aqui no User Story 2 & 3 será a tela que será redirecionad
 
 ## Endpoints da API
 
-### 🔐 Usuários
+### Usuários
 
 - **POST /usuarios**
   - Cria um novo usuário.
@@ -230,7 +230,7 @@ User Story 2 & 3 -> Aqui no User Story 2 & 3 será a tela que será redirecionad
 
 ---
 
-### 🏢 Salas
+### Salas
 
 - **POST /salas**
   - Cria uma nova sala.
@@ -248,7 +248,7 @@ User Story 2 & 3 -> Aqui no User Story 2 & 3 será a tela que será redirecionad
 
 ---
 
-### 📅 Reservas
+### Reservas
 
 - **POST /reservas**
   - Cria uma nova reserva.
