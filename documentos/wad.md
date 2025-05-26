@@ -200,12 +200,33 @@ User Story 2 & 3 -> Aqui no User Story 2 & 3 será a tela que será redirecionad
 
 ### 3.4. Guia de estilos (Semana 05)
 
-*Descreva aqui orientações gerais para o leitor sobre como utilizar os componentes do guia de estilos de sua solução.*
+[**Figma**](https://www.figma.com/design/ny07wDWEYOBwBMXCgccSbo/Design---OrganizaMe?node-id=0-1&t=rrW3fGv0XVZAzpGn-1)
 
+<p align="center">
+  <img src="https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreicjf3kj5jafpyaqmiqm5un5ro5v4iuwu633gdwrucl4u5myi2ebue" alt="GuiaEstilo">
+</p>
 
 ### 3.5. Protótipo de alta fidelidade (Semana 05)
 
-*Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
+[**Figma**](https://www.figma.com/design/ny07wDWEYOBwBMXCgccSbo/Design---OrganizaMe?node-id=0-1&t=rrW3fGv0XVZAzpGn-1)
+
+### Tela Principal de Uso
+
+<p align="center">
+  <img src="https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreifoetwt4eij5dhypw5tv3lzeylrzrftd7phrvg6np24sye6jxg5ba" alt="TelaPrincipal">
+</p>
+
+### User Story 1
+
+<p align="center">
+  <img src="https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreiaqlqq22mn6mxyzdvamwv4hc4nkr2cakiwfvtxupikse3ngks2uvq" alt="UserStory1">
+</p>
+
+### User Story 2 & 3
+
+<p align="center">
+  <img src="https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreidwtm2zd4rob44xi2ijoyubvilywb5jjvsxbhwbnjny4vbnohpzri" alt="UserStory23">
+</p>
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
