@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Usuários</title>
+  <link rel="stylesheet" href="../css/usuarios.css">
+</head>
+<body>
+  <h1>Lista de Usuários</h1>
+  <div id="lista-usuarios">Carregando...</div>
+
+  <h2>Adicionar Usuário</h2>
+  <form id="form-usuario">
+    <input type="text" name="nome" placeholder="Nome" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="senha" placeholder="Senha" required />
+    <input type="text" name="papel" placeholder="Papel (admin, user, etc.)" />
+    <button type="submit">Adicionar Usuário</button>
+  </form>
+
+  <script>
+    const lista = document.getElementById('lista-usuarios');
+
+    function formatarData(timestamp) {
+      const data = new Date(timestamp);
+      return data.toLocaleString('pt-BR');
+    }
+
+    async function carregarUsuarios() {
+      const res = await fetch('/api/usuarios');
+      const usuarios = await res.json();
+      lista.innerHTML = '';
+      usuarios.forEach(usuario => {
+        const div = document.createElement('div');
+        div.className = 'usuario';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = usuario.nome;
+
+        const pEmail = document.createElement('p');
+        pEmail.innerHTML = `<strong>Email:</strong> ${usuario.email ?? 'Não informado'}`;
+
+        const pPapel = document.createElement('p');
+        pPapel.innerHTML = `<strong>Papel:</strong> ${usuario.papel ?? 'Não definido'}`;
+
+        const pCriado = document.createElement('p');
+        pCriado.innerHTML = `<strong>Criado em:</strong> ${formatarData(usuario.criado)}`;
+
+        const inputNome = document.createElement('input');
+        inputNome.type = 'text';
+        inputNome.value = usuario.nome;
+        inputNome.style.display = 'none';
+
+        const botoes = document.createElement('div');
+        botoes.className = 'botoes';
+
+        const btnEditar = document.createElement('button');
+        btnEditar.textContent = 'Editar';
+        btnEditar.onclick = async () => {
+          if (inputNome.style.display === 'none') {
+            inputNome.style.display = 'inline-block';
+          } else {
+            const novoNome = inputNome.value;
+            const response = await fetch(`/api/usuarios/${usuario.id}`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ nome: novoNome })
+            });
+            if (response.ok) {
+              await carregarUsuarios();
+            }
+          }
+        };
+
+        const btnExcluir = document.createElement('button');
+        btnExcluir.textContent = 'Excluir';
+        btnExcluir.onclick = async () => {
+          if (confirm(`Excluir usuário ${usuario.nome}?`)) {
+            const response = await fetch(`/api/usuarios/${usuario.id}`, {
+              method: 'DELETE'
+            });
+            if (response.ok) {
+              await carregarUsuarios();
+            }
+          }
+        };
+
+        div.appendChild(h3);
+        div.appendChild(pEmail);
+        div.appendChild(pPapel);
+        div.appendChild(pCriado);
+        div.appendChild(inputNome);
+        botoes.appendChild(btnEditar);
+        botoes.appendChild(btnExcluir);
+        div.appendChild(botoes);
+        lista.appendChild(div);
+      });
+    }
+
+    document.getElementById('form-usuario').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        nome: form.nome.value,
+        email: form.email.value,
+        senha: form.senha.value,
+        papel: form.papel.value || null
+      };
+      const res = await fetch('/api/usuarios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        form.reset();
+        await carregarUsuarios();
+      }
+    });
+
+    carregarUsuarios();
+  </script>
+</body>
+</html>

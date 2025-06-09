@@ -1,0 +1,93 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 2rem;
+  background-color: #f2f4f7;
+  max-width: 800px;
+  margin: auto;
+  color: #333;
+}
+
+h1, h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.reserva {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.reserva:hover {
+  transform: translateY(-3px);
+}
+
+.reserva p {
+  margin: 0.4rem 0;
+  line-height: 1.4;
+  font-size: 0.98rem;
+}
+
+.botoes {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.editar {
+  background-color: #f0ad4e;
+  color: #fff;
+}
+
+.editar:hover {
+  background-color: #ec971f;
+}
+
+.excluir {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+.excluir:hover {
+  background-color: #c9302c;
+}
+
+#adicionar-reserva {
+  padding: 0.6rem 1.4rem;
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  transition: background-color 0.2s ease;
+}
+
+#adicionar-reserva:hover {
+  background-color: #4cae4c;
+}
+
+input {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.7rem;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}

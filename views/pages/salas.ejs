@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Salas</title>
+  <link rel="stylesheet" href="../css/salas.css">
+  <style>
+    .sala {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .sala input {
+      margin-bottom: 5px;
+      width: 100%;
+    }
+    .sala label {
+      display: block;
+      margin-top: 5px;
+    }
+    .sala button {
+      margin-top: 5px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Salas</h1>
+  <div id="lista-salas">Carregando...</div>
+
+  <h2>Adicionar Sala</h2>
+  <form id="form-nova-sala">
+    <input type="text" placeholder="Nome" id="nova-nome" required><br>
+    <input type="text" placeholder="Localização" id="nova-localizacao"><br>
+    <input type="number" placeholder="Capacidade" id="nova-capacidade"><br>
+    <input type="text" placeholder="Descrição" id="nova-descricao"><br>
+    <label><input type="checkbox" id="nova-disponivel" checked> Disponível</label><br>
+    <button type="submit">Criar sala</button>
+  </form>
+
+  <script>
+    const lista = document.getElementById('lista-salas');
+
+    function formatarData(timestamp) {
+      const data = new Date(timestamp);
+      return data.toLocaleString('pt-BR');
+    }
+
+    function criarElementoSala(sala) {
+      const div = document.createElement('div');
+      div.className = 'sala';
+
+      const nome = document.createElement('input');
+      nome.value = sala.nome || '';
+      const localizacao = document.createElement('input');
+      localizacao.value = sala.localizacao || '';
+      const capacidade = document.createElement('input');
+      capacidade.type = 'number';
+      capacidade.value = sala.capacidade || '';
+      const descricao = document.createElement('input');
+      descricao.value = sala.descricao || '';
+      const disponivel = document.createElement('input');
+      disponivel.type = 'checkbox';
+      disponivel.checked = sala.disponivel;
+
+      const criado = document.createElement('p');
+      criado.innerHTML = `<strong>Criado em:</strong> ${formatarData(sala.criado)}`;
+
+      const salvarBtn = document.createElement('button');
+      salvarBtn.textContent = 'Salvar';
+      salvarBtn.onclick = () => {
+        fetch(`/api/salas/${sala.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nome: nome.value,
+            localizacao: localizacao.value,
+            capacidade: parseInt(capacidade.value),
+            descricao: descricao.value,
+            disponivel: disponivel.checked
+          })
+        }).then(() => carregarSalas());
+      };
+
+      const excluirBtn = document.createElement('button');
+      excluirBtn.textContent = 'Excluir';
+      excluirBtn.onclick = () => {
+        fetch(`/api/salas/${sala.id}`, {
+          method: 'DELETE'
+        }).then(() => carregarSalas());
+      };
+
+      div.appendChild(nome);
+      div.appendChild(localizacao);
+      div.appendChild(capacidade);
+      div.appendChild(descricao);
+      div.appendChild(disponivel);
+      div.appendChild(criado);
+      div.appendChild(salvarBtn);
+      div.appendChild(excluirBtn);
+
+      return div;
+    }
+
+    function carregarSalas() {
+      fetch('/api/salas')
+        .then(res => res.json())
+        .then(salas => {
+          lista.innerHTML = '';
+          salas.forEach(sala => {
+            if (!sala.id) return; // Garante que cada sala tenha ID
+            const elementoSala = criarElementoSala(sala);
+            lista.appendChild(elementoSala);
+          });
+        })
+        .catch(err => {
+          lista.textContent = 'Erro ao carregar salas.';
+          console.error(err);
+        });
+    }
+
+    document.getElementById('form-nova-sala').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nome = document.getElementById('nova-nome').value;
+      const localizacao = document.getElementById('nova-localizacao').value;
+      const capacidade = parseInt(document.getElementById('nova-capacidade').value) || 0;
+      const descricao = document.getElementById('nova-descricao').value;
+      const disponivel = document.getElementById('nova-disponivel').checked;
+
+      fetch('/api/salas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, localizacao, capacidade, descricao, disponivel })
+      })
+      .then(() => {
+        carregarSalas();
+        e.target.reset();
+      });
+    });
+
+    carregarSalas();
+  </script>
+</body>
+</html>

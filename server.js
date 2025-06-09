@@ -10,9 +10,10 @@ const port = 3000;
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static('views'));
 
 // Usando as rotas definidas
-app.use('/api', routes);
+app.use('/', routes);
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

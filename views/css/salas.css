@@ -1,0 +1,187 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  padding: 2rem;
+  color: #333;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1, h2 {
+  color: #222;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+#lista-salas {
+  margin-bottom: 2rem;
+}
+
+/* CARD DE SALA */
+.sala {
+  background-color: #fff;
+  border-left: 4px solid #28a745;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  transition: box-shadow 0.2s;
+}
+
+.sala:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.sala label {
+  display: block;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.sala input[type="text"],
+.sala input[type="number"],
+.sala textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: #fdfdfd;
+  transition: border-color 0.2s;
+}
+
+.sala input:focus,
+.sala textarea:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+}
+
+.sala input[type="checkbox"] {
+  margin-right: 0.4rem;
+  transform: scale(1.2);
+}
+
+.sala .info {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+.sala .botoes {
+  margin-top: 1.2rem;
+}
+
+.sala button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.sala button:hover {
+  background-color: #0056b3;
+}
+
+.sala button.deletar {
+  background-color: #dc3545;
+}
+
+.sala button.deletar:hover {
+  background-color: #a71d2a;
+}
+
+/* FORMULÁRIO DE NOVA SALA */
+form#form-nova-sala {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin-top: 2rem;
+}
+
+form#form-nova-sala label {
+  display: block;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+form#form-nova-sala input[type="text"],
+form#form-nova-sala input[type="number"],
+form#form-nova-sala textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  background-color: #fdfdfd;
+  transition: border-color 0.2s;
+}
+
+form#form-nova-sala input:focus,
+form#form-nova-sala textarea:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+}
+
+form#form-nova-sala input[type="checkbox"] {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+}
+
+form#form-nova-sala button {
+  margin-top: 1.2rem;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+form#form-nova-sala button:hover {
+  background-color: #1e7e34;
+}
+
+/* Evita que o input fique colado no fundo do card */
+.sala input:last-of-type,
+.sala textarea:last-of-type {
+  margin-bottom: 0.8rem;
+}
+
+/* Garante que todos inputs usem box-sizing adequado */
+.sala input,
+.sala textarea,
+form#form-nova-sala input,
+form#form-nova-sala textarea {
+  box-sizing: border-box;
+}
+
+/* Garante que o fundo do card sempre tenha espaço inferior */
+.sala {
+  padding-bottom: 2rem;
+}
+
+/* Ajuste visual para inputs adicionados dinamicamente (ex: nova-nome) */
+.sala input[type="text"].nova-nome,
+.sala input[type="text"].dinamico {
+  margin-top: 0.5rem;
+  margin-bottom: 0.8rem;
+  background-color: #fcfcfc;
+  border: 1px solid #bbb;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}

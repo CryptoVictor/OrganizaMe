@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservas | OrganizaMe</title>
+  <link rel="stylesheet" href="/css/reservas.css" />
+  <style>
+    .reserva {
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .botoes {
+      margin-top: 5px;
+    }
+    .botoes button {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Reservas</h1>
+  <div id="lista-reservas">Carregando...</div>
+
+  <h2>Adicionar Reserva</h2>
+  <form id="form-reserva">
+    <input type="number" name="usuario_id" placeholder="ID do usuário" required />
+    <input type="number" name="sala_id" placeholder="ID da sala" required />
+    <input type="datetime-local" name="data_inicio" required />
+    <input type="datetime-local" name="data_fim" required />
+    <input type="text" name="observacoes" placeholder="Observações" />
+    <button type="submit">Nova reserva</button>
+  </form>
+
+  <script>
+    async function carregarReservas() {
+      const res = await fetch('/api/reservas');
+      const reservas = await res.json();
+      const lista = document.getElementById('lista-reservas');
+      lista.innerHTML = '';
+
+      reservas.forEach(reserva => {
+        const div = document.createElement('div');
+        div.className = 'reserva';
+
+        const p = document.createElement('p');
+        p.innerHTML = `
+          <strong>ID:</strong> ${reserva.id}<br>
+          <strong>Usuário:</strong> ${reserva.usuario_id}<br>
+          <strong>Sala:</strong> ${reserva.sala_id}<br>
+          <strong>Início:</strong> ${new Date(reserva.data_inicio).toLocaleString()}<br>
+          <strong>Fim:</strong> ${new Date(reserva.data_fim).toLocaleString()}<br>
+          <strong>Status:</strong> ${reserva.status}<br>
+          <strong>Observações:</strong> ${reserva.observacoes || 'Nenhuma'}<br>
+          <strong>Criado em:</strong> ${new Date(reserva.criado).toLocaleString()}
+        `;
+
+        const inputStatus = document.createElement('input');
+        inputStatus.type = 'text';
+        inputStatus.value = reserva.status;
+        inputStatus.style.display = 'none';
+
+        const botoes = document.createElement('div');
+        botoes.className = 'botoes';
+
+        const btnEditar = document.createElement('button');
+        btnEditar.textContent = 'Editar status';
+        btnEditar.onclick = async () => {
+          if (inputStatus.style.display === 'none') {
+            inputStatus.style.display = 'block';
+          } else {
+            const novoStatus = inputStatus.value;
+            const response = await fetch(`/api/reservas/${reserva.id}`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ status: novoStatus })
+            });
+            if (response.ok) {
+              await carregarReservas();
+            }
+          }
+        };
+
+        const btnExcluir = document.createElement('button');
+        btnExcluir.textContent = 'Excluir';
+        btnExcluir.onclick = async () => {
+          if (confirm('Tem certeza que deseja excluir esta reserva?')) {
+            const response = await fetch(`/api/reservas/${reserva.id}`, { method: 'DELETE' });
+            if (response.ok) {
+              await carregarReservas();
+            }
+          }
+        };
+
+        div.appendChild(p);
+        div.appendChild(inputStatus);
+        botoes.appendChild(btnEditar);
+        botoes.appendChild(btnExcluir);
+        div.appendChild(botoes);
+        lista.appendChild(div);
+      });
+    }
+
+    document.getElementById('form-reserva').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        usuario_id: parseInt(form.usuario_id.value),
+        sala_id: parseInt(form.sala_id.value),
+        data_inicio: form.data_inicio.value,
+        data_fim: form.data_fim.value,
+        observacoes: form.observacoes.value
+      };
+
+      const res = await fetch('/api/reservas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        form.reset();
+        await carregarReservas();
+      }
+    });
+
+    carregarReservas();
+  </script>
+</body>
+</html>
