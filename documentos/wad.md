@@ -232,61 +232,129 @@ User Story 2 & 3 -> Aqui no User Story 2 & 3 será a tela que será redirecionad
 
 ### Usuários
 
-- **POST /usuarios**
+- **GET /usuarios**
+  - Lista o frontend dos dados relacionados ao usuário.
+    
+- **POST api/usuarios**
   - Cria um novo usuário.
   - Body: `{ nome, email, senha, papel? }`
 
-- **GET /usuarios**
+- **GET api/usuarios**
   - Lista todos os usuários.
 
-- **PUT /usuarios/:id**
+- **PUT api/usuarios/:id**
   - Atualiza os dados de um usuário.
   - Body: `{ nome?, email?, senha?, papel? }`
 
-- **DELETE /usuarios/:id**
+- **DELETE api/usuarios/:id**
   - Remove um usuário do sistema.
 
 ---
 
 ### Salas
 
-- **POST /salas**
+- **GET /salas**
+  - Lista o frontend dos dados relacionados a sala.
+  - 
+- **POST api/salas**
   - Cria uma nova sala.
   - Body: `{ nome, localizacao, capacidade, descricao, disponivel? }`
 
-- **GET /salas**
+- **GET api/salas**
   - Lista todas as salas.
 
-- **PUT /salas/:id**
+- **PUT api/salas/:id**
   - Edita os dados de uma sala.
   - Body: `{ nome, localizacao, capacidade, descricao, disponivel }`
 
-- **DELETE /salas/:id**
+- **DELETE api/salas/:id**
   - Exclui uma sala.
 
 ---
 
 ### Reservas
 
-- **POST /reservas**
+- **GET /reservas**
+  - Lista o frontend dos dados relacionados as reservas
+    
+- **POST api/reservas**
   - Cria uma nova reserva.
   - Body: `{ usuario_id, sala_id, data_inicio, data_fim, observacoes? }`
 
-- **GET /reservas**
+- **GET api/reservas**
   - Lista todas as reservas.
 
-- **PUT /reservas/:id**
+- **PUT api/reservas/:id**
   - Edita uma reserva existente.
   - Body: `{ usuario_id?, sala_id?, data_inicio?, data_fim?, status?, observacoes? }`
 
-- **DELETE /reservas/:id**
+- **DELETE api/reservas/:id**
   - Exclui uma reserva.
 
 ---
 
 ### 3.7 Interface e Navegação (Semana 07)
 
-*Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+A Interface e Navegação foram desenvolvidas utilizando **HTML com EJS**, **CSS customizado** e integração direta com os controllers por meio de rotas Express. A estrutura principal conta com um arquivo `index.ejs`, que serve como página inicial e redireciona para as páginas de **Usuários**, **Reservas** e **Salas**, facilitando a navegação no sistema.
+
+### Arquivo `index.ejs`
+
+O `index.ejs` é a página inicial do sistema, contendo botões que redirecionam para as rotas de usuários, reservas e salas. Dessa forma, o usuário pode acessar facilmente cada módulo.
+
+Imagem ilustrativa da página inicial:
+![Index - Página Inicial](https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreibnjfdhgzdqhgnbmabllol4afgb5nnnzhntveaz7ip5tr3ibibudy)
+
+---
+
+### Módulo de Usuários (`/usuarios`)
+
+**Funcionalidades e estrutura:**
+
+* Formulário para cadastro de usuários com campos para nome, email, senha e papel.
+* Lista dinâmica de usuários exibida em cards estilizados.
+* Botões para editar e excluir usuários, com ações integradas ao controller via chamadas `PUT` e `DELETE`.
+* Layout limpo e funcional, utilizando CSS para melhor visualização e usabilidade.
+
+Imagem da tela de usuários:
+![Tela de Usuários](https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreih6l4rbnovrkdti6dtvvs3tsnbhr2c74bpmhzlm4tu52ku7w73loq)
+
+---
+
+### Módulo de Reservas (`/reservas`)
+
+**Funcionalidades e estrutura:**
+
+* Formulário para adicionar novas reservas.
+* Cada reserva é exibida em um card com detalhes e opções para editar e excluir.
+* Botões estilizados para ações rápidas.
+* Comunicação com o backend para persistência de dados e atualização da interface em tempo real.
+
+Imagem da tela de reservas:
+![Tela de Reservas](https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreiaujfag4injj3rgschghf3zd4wsqme7jmc5vr4lduk46mv2xx23ei)
+
+---
+
+### Módulo de Salas (`/salas`)
+
+**Funcionalidades e estrutura:**
+
+* Interface similar aos outros módulos para manter uniformidade visual.
+* Cadastro de salas e listagem em cards.
+* Opções para editar e excluir salas, com atualização dinâmica via rotas.
+
+Imagem da tela de salas:
+![Tela de Salas](https://plum-atomic-lemur-391.mypinata.cloud/ipfs/bafkreifaibgn35recyug7d7xa3vpn3k2o66piciuk6wxrvsxshsesrrelm)
+
+---
+
+### Estilização (CSS)
+
+O CSS do sistema foi desenvolvido para proporcionar uma experiência visual limpa e consistente em todos os módulos:
+
+* Cards com bordas arredondadas, sombra suave e espaçamento adequado.
+* Botões com cores distintas para ações diferentes (editar, excluir, adicionar).
+* Layout responsivo básico para visualização em telas variadas.
+* Uso de fontes legíveis e organização clara dos elementos na tela.
 
 ---
 
