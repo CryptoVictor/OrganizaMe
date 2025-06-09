@@ -127,9 +127,9 @@ npm start
 1. Configure o .env:
 
 ```bash
-DB_NAME='nome_do_banco'
 DB_USER='seu_usuario'
 DB_HOST='localhost
+DB_DATABASE='nome_do_banco'
 DB_PASSWORD='sua senha'
 DB_PORT=0000
 ```
@@ -151,28 +151,31 @@ http://localhost:3000/api
 ```bash
 Usuários
 
-POST /usuarios → Cria um usuário
-GET /usuarios → Lista todos os usuários
-PUT /usuarios/:id → Atualiza um usuário
-DELETE /usuarios/:id → Exclui um usuário
+GET /usuarios → Frontend do usuário
+POST /api/usuarios → Cria um usuário
+GET /api/usuarios → Lista todos os usuários
+PUT /api/usuarios/:id → Atualiza um usuário
+DELETE /api/usuarios/:id → Exclui um usuário
 ```
 
 ```bash
 Salas
 
-POST /salas → Cria uma nova sala
-GET /salas → Lista todas as salas
-PUT /salas/:id → Edita uma sala
-DELETE /salas/:id → Exclui uma sala
+GET /salas → Frontend da sala
+POST /api/salas → Cria uma nova sala
+GET /api/salas → Lista todas as salas
+PUT /api/salas/:id → Edita uma sala
+DELETE /api/salas/:id → Exclui uma sala
 ```
 
 ```bash
 Reservas
 
-POST /reservas → Cria uma reserva
-GET /reservas → Lista todas as reservas
-PUT /reservas/:id → Atualiza uma reserva
-DELETE /reservas/:id → Remove uma reserva
+GET /reservas → Frontend da reserva
+POST /api/reservas → Cria uma reserva
+GET /api/reservas → Lista todas as reservas
+PUT /api/reservas/:id → Atualiza uma reserva
+DELETE /api/reservas/:id → Remove uma reserva
 ```
 
 # Contribuição
